@@ -1,5 +1,6 @@
 from lib import *
 
+
 def EntryInfo():
     order = input('''If you want to register, press 1,
 If you want to login, press 2 
@@ -45,7 +46,13 @@ def FillGaps(_name, x):
         isEmpty = True
         x = input("{} can't be empty : ".format(_name.capitalize()))
     return isEmpty
-
+def ChangeAccount(x, _list):
+    db['users'][x]['email']=_list[0]
+    db['users'][x]['username']=_list[1]
+    db['users'][x]['password']=_list[2]
+    print(db)
+    with open("db.json", "w") as json_file:
+        json.dump(db, json_file)
 
 def CheckSpaceExist(_name, x):
     spaceExist = False

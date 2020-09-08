@@ -16,7 +16,7 @@ class User:
             "email": self.email,
             "username": self.username,
             "password": self.password,
-            "role": self.role
+            "role": self.role,
         }
 
     def AddDictToJson(self):

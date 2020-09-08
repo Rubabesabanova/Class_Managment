@@ -15,30 +15,21 @@ def EntryOrder():
             order=EntryInfo()
         elif order=="2":
             x=Login()
-            if x!=False:
+            if x!=-1:
                 if db['users'][x]['role']=="User":
                     userorder=UserInfo()
                     while True:
                         delete=False
                         if userorder=="account":
                             ShowAccount(x)
-                            userorder=UserInfo()
                         if userorder=="change":
-                            print('''Here is your previous information. Fill gaps to change account.
-If you want to quit, type "quit"''')
+                            print('''Here is your previous information. Fill gaps to change account.\nIf you want to quit, type "quit"''')
                             ShowAccount(x)
                             userlist=Registration()
-                            if x!=False:
-                                db['users'][x]['email']=userlist[0]
-                                db['users'][x]['username']=userlist[1]
-                                db['users'][x]['password']=userlist[2]
-                                print(db)
-                                with open("db.json", "w") as json_file:
-                                    json.dump(db, json_file)
-                            userorder=UserInfo()
+                            if x!=-1 and userlist!=-1:
+                                ChangeAccount(x, userlist)
                         if userorder=="delete":
-                            checkDelete=input('''Are you sure to delete the account?'
-Type YES / NO    : ''').lower()
+                            checkDelete=input('''Are you sure to delete the account?'\nType YES / NO    : ''').lower()
                             while True:
                                 if checkDelete=='no':
                                     break
@@ -49,44 +40,59 @@ Type YES / NO    : ''').lower()
                                     checkDelete=("Please enter correct keyword")
                             if delete:
                                 break
-                            userorder=UserInfo()
                         if userorder=="quit":
                             break
                         else:
                             userorder=input("Please enter correct keyword : ")
-
+                        userorder=UserInfo()
                 if db['users'][x]['role']=="Editor":
                     editororder=EditorInfo()
                     while True:
                         if editororder=="account":
                             ShowAccount(x)
-                            editororder=EditorInfo()
+                            
                         if editororder=="change":
-                            print('''Here is your previous information. Fill gaps to change account.
-If you want to quit, type "quit"''')
+                            print('''Here is your previous information. Fill gaps to change account.\nIf you want to quit, type "quit"''')
                             ShowAccount(x)
                             editorlist=Registration()
-                            if x!=False:
-                                db['users'][x]['email']=editorlist[0]
-                                db['users'][x]['username']=editorlist[1]
-                                db['users'][x]['password']=editorlist[2]
-                                with open("db.json", "w") as json_file:
-                                    json.dump(db, json_file)
-                            editororder=UserInfo()
+                            if x!=-1 and editorlis!=-1:
+                                ChangeAccount(x, editorlist)
                         if editororder=="quit":
                             break
                         else:
                             editororder=input("Please enter correct keyword : ")
+                        editororder=EditorInfo()
                 if db['users'][x]['role']=="Admin":
                     adminorder=AdminInfo()
                     while True:
                         if adminorder=="account":
                             ShowAccount(x)
-                            adminorder=AdminInfo()
-                        if adminorder=="quit":
+                            
+                        elif adminorder=="change":
+                            print('''Here is your previous information. Fill gaps to change account.\nIf you want to quit, type "quit"''')
+                            ShowAccount(x)
+                            adminlist=Registration()
+                            if x!=-1 and adminlist!=-1:
+                                ChangeAccount(x, adminlist)
+                            
+                        elif adminorder=="delete":
+                            checkDelete=input('''Are you sure to delete the account?'\nType YES / NO    : ''').lower()
+                            while True:
+                                if checkDelete=='no':
+                                    break
+                                elif checkDelete=='yes':
+                                    delete=DeleteAccount(x)
+                                    break
+                                else:
+                                    checkDelete=("Please enter correct keyword : ")
+                            if delete:
+                                break
+                            
+                        elif adminorder=="quit":
                             break
                         else:
                             adminorder=input("Please enter correct keyword : ")
+                        adminorder=AdminInfo()
             order=EntryInfo()
         else:
             order=input("Please enter correct keyword : ")
