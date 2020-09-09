@@ -18,22 +18,46 @@ def EditorInfo():
     x=input('''If you want to see account, type "account",
 If you want to change account, type "change",
 If you want to delete account, type "delete",
+If you want to see all students, type "user",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x
 def AdminInfo():
-    x=input('''If you want to see account, type "account",
+    x=input('''~:~:~:~:~:~:~:~:~:~:~:~:
+                Account
+If you want to see account, type "account",
 If you want to change account, type "change",
 If you want to delete account, type "delete",
+If you want to add a new user, type "adduser",
+If you want to see all users, type "all",
+~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+                Products
+If you want to add a product, type "addproduct",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x
 def ShowAccount(x):
-    print(f'''**********************
+    print(f'''~:~:~:~:~:~:~:~:~:~:~:~:
 Email : {db['users'][x]['email']}
 Username : {db['users'][x]['username']}
 Password : {db['users'][x]['password']}
-**********************''')
+~:~:~:~:~:~:~:~:~:~:~:~:''')
+def ShowAll():
+    for i in db['users']:
+        print(f'''~:~:~:~:~:~:~:~:~:~:~:~:
+Email : {i['email']}
+Username : {i['username']}
+Password : {i['password']}
+Role : {i['role']}
+~:~:~:~:~:~:~:~:~:~:~:~:''')
+def ShowUsers():
+    for i in db['users']:
+        if i['role']=="User":
+            print(f'''~:~:~:~:~:~:~:~:~:~:~:~:
+Email : {i['email']}
+Username : {i['username']}
+Password : {i['password']}
+~:~:~:~:~:~:~:~:~:~:~:~:''')
 def DeleteAccount(x):
     db['users'].pop(x)
     with open("db.json", "w") as json_file:
@@ -44,7 +68,8 @@ def FillGaps(_name, x):
     isEmpty = False
     while not x:
         isEmpty = True
-        x = input("{} can't be empty : ".format(_name.capitalize()))
+        print("{} can't be empty".format(_name.capitalize()))
+        break
     return isEmpty
 def ChangeAccount(x, _list):
     db['users'][x]['email']=_list[0]
@@ -70,7 +95,12 @@ def CheckLength(_name, _number, x):
         print('''{} should be at least {} characters.'''.format(_name.capitalize(), _number))
     return correctLength
 
-
+def CheckNumber(_name, x):
+    isDigit=False
+    if not x.isdigit():
+        print('''{} should contain only digits'''.format(_name.capitalize()))
+        isDigit=True
+    return isDigit
 
 
 

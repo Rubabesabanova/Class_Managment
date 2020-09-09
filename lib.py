@@ -38,5 +38,20 @@ class Admin(User):
         self.role = "Admin"
 
 
-
-
+class Product:
+    def __init__(self, _name, _id, _price):
+        self.name=_name
+        self.id=_id
+        self.price=_price
+        
+    def TurnToDict(self):
+        return {
+            "name": self.name,
+            "id": self.id,
+            "price": self.price,
+            
+        }
+    def AddToJson(self):
+        db['products'].append(self.TurnToDict())
+        with open("db.json", "w") as json_file:
+            json.dump(db, json_file)
