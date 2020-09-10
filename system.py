@@ -31,6 +31,8 @@ def UserSystem(x):
                 break
         elif userorder=="allproducts":
             ShowAllProducts()
+        elif userorder=="buy":
+            BuyProduct()
         elif userorder == "quit":
             break
         else:
@@ -108,4 +110,4 @@ def AdminSystem(x):
         else:
             print("Please enter correct keyword : ")
         adminorder=AdminInfo()
-AdminSystem(0)
+UserSystem(2)

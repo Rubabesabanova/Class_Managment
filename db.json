@@ -1,1 +1,14 @@
-{"users": [{"email": "123@", "username": "ruby", "password": "123a", "role": "Admin"}, {"email": "jon@", "username": "jon", "password": "123a", "role": "Editor"}, {"email": "aaa@", "username": "aaa", "password": "123a", "role": "User"}, {"email": "wd@", "username": "ruby256", "password": "123a", "role": "User"}, {"email": "wefe@", "username": "sef", "password": "123a", "role": "User"}, {"email": "123@", "username": "sfef", "password": "123a", "role": "Admin"}], "products": []}
+{
+  "users": [
+    { "email": "123@", "username": "ruby", "password": "123a", "role": "Admin" },
+    { "email": "jon@", "username": "jon", "password": "123a", "role": "Editor" },
+    { "email": "aaa@", "username": "aaa", "password": "123a", "role": "User" },
+    { "email": "wd@", "username": "ruby256", "password": "123a", "role": "User" },
+    { "email": "wefe@", "username": "sef", "password": "123a", "role": "User" },
+    { "email": "123@", "username": "sfef", "password": "123a", "role": "Admin" }
+  ],
+  "products": [
+    { "name": "aefef", "id": "123", "price": 123.0, "amount": 122 },
+    { "name": "123", "id": "133", "price": 33.0, "amount": 0 }
+  ]
+}

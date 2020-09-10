@@ -10,8 +10,8 @@ def CreateProduct():
     if price==True:return -1
     amount = CheckAmount("amount", input("Amount : "))
     if amount==True:return -1
-    print(amount)
-    return [name, id, price, amount]
+    
+    return [name, id, price, int(amount)]
 def AddProduct():
     x=CreateProduct()
     if x!=-1:
@@ -21,12 +21,13 @@ def AddProduct():
 def ShowAllProducts():
     if len(db['products'])>0:
         for i in db['products']:
-            print(f'''~:~:~:~:~:~:~:~:~:~:~:~:
-Name : {i['name']}
-ID : {i['id']}
-Price : {i['price']}
-Amount : {i['amount']}
-~:~:~:~:~:~:~:~:~:~:~:~:''')
+            if i["amount"]>0:
+                print(f'''~:~:~:~:~:~:~:~:~:~:~:~:
+    Name : {i['name']}
+    ID : {i['id']}
+    Price : {i['price']}
+    Amount : {i['amount']}
+    ~:~:~:~:~:~:~:~:~:~:~:~:''')
     else:
         print('There is no products left')
 def ChangeProduct():
@@ -73,6 +74,26 @@ def DeleteProduct():
                 break
             else:
                 print("Type correct keyword ! ")
+def BuyProduct():
+    while True:
+        id=CheckProduct(input("ID : "))
+        if id!=-1 and db['products'][id]['amount']>0:
+            while True:
+                x=input("YES / NO ? ").lower()
+                if x=="yes":
+                    db['products'][id]['amount']-=1
+                    with open("db.json", "w") as json_file:
+                        json.dump(db, json_file)
+                    print("You bought successfully ! ")
+                    break
+                elif x=="no":
+                    break
+                else:
+                    print("Type correct keyword ! ")
+            break
+        elif db['products'][id]['amount']<=0:
+            print("This product is out of stock ! ")
+
 # Name validation 
 def CheckName(_name, x):
     while FillGaps(_name, x) or CheckSymbolExist(_name, x):

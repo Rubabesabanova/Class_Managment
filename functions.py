@@ -16,6 +16,7 @@ If you want to delete account, type "delete",
 ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
                 Products
 If you want to see all products, type "allproducts",
+If you want to purchase a product, type "buy",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x
