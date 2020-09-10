@@ -29,6 +29,8 @@ def UserSystem(x):
                     checkDelete = ("Please enter correct keyword")
             if delete:
                 break
+        elif userorder=="allproducts":
+            ShowAllProducts()
         elif userorder == "quit":
             break
         else:
@@ -38,8 +40,7 @@ def EditorSystem(x):
     editororder=EditorInfo()
     while True:
         if editororder=="account":
-            ShowAccount(x)
-            
+            ShowAccount(x)       
         elif editororder=="change":
             print('''Here is your previous information. Fill gaps to change account.\nIf you want to quit, type "quit"''')
             ShowAccount(x)
@@ -60,6 +61,8 @@ def EditorSystem(x):
                 break
         elif editororder=="user":
             ShowUsers()
+        elif editororder=="allproducts":
+            ShowAllProducts()
         elif editororder=="quit":
             break
         else:
@@ -94,6 +97,12 @@ def AdminSystem(x):
             ShowAll()
         elif adminorder=="addproduct":
             AddProduct()
+        elif adminorder=="allproducts":
+            ShowAllProducts()
+        elif adminorder=="changeproduct":
+            ChangeProduct()
+        elif adminorder=="deleteproduct":
+            DeleteProduct()
         elif adminorder=="quit":
             break
         else:

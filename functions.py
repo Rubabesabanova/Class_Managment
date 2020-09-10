@@ -8,22 +8,32 @@ If you want to quit, press 0
 What do you want to do ? ''').lower()
     return order
 def UserInfo():
-    x=input('''If you want to see account, type "account",
+    x=input('''~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+                Account
+If you want to see account, type "account",
 If you want to change account, type "change",
 If you want to delete account, type "delete",
+~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+                Products
+If you want to see all products, type "allproducts",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x
 def EditorInfo():
-    x=input('''If you want to see account, type "account",
+    x=input('''~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+                Account
+If you want to see account, type "account",
 If you want to change account, type "change",
 If you want to delete account, type "delete",
 If you want to see all students, type "user",
+~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
+                Products
+If you want to see all products, type "allproducts",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x
 def AdminInfo():
-    x=input('''~:~:~:~:~:~:~:~:~:~:~:~:
+    x=input('''~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
                 Account
 If you want to see account, type "account",
 If you want to change account, type "change",
@@ -33,6 +43,9 @@ If you want to see all users, type "all",
 ~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:
                 Products
 If you want to add a product, type "addproduct",
+If you want to see all products, type "allproducts",
+If you want to change a product, type "changeproduct",
+If you want to delete a product, type "deleteproduct",
 If you want to quit, type "quit". 
 What do you want to do? ''')
     return x

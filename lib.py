@@ -39,17 +39,17 @@ class Admin(User):
 
 
 class Product:
-    def __init__(self, _name, _id, _price):
+    def __init__(self, _name, _id, _price, _amount):
         self.name=_name
         self.id=_id
         self.price=_price
-        
+        self.amount=_amount
     def TurnToDict(self):
         return {
             "name": self.name,
             "id": self.id,
             "price": self.price,
-            
+            "amount": self.amount
         }
     def AddToJson(self):
         db['products'].append(self.TurnToDict())
